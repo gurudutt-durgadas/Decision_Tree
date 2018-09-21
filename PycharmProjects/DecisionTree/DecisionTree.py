@@ -296,6 +296,12 @@ def print_tree(node, spacing=""):
 
     # Base case: we've reached a leaf
     if isinstance(node, Leaf):
+        # Print the depth
+        print("Depth:" + str(node.depth))
+
+        # Print the node id
+        print("Node Id:" + str(node.id))
+
         print(spacing + "Predict", node.predictions)
         return
 
@@ -330,6 +336,7 @@ def print_leaf(counts):
 def getLeafNodes(node, leafNodes=[]):
     # Returns a list of all leaf nodes of a tree
     if isinstance(node, Leaf):
+        #print(node.rows)
         leafNodes.append(node)
         return
     getLeafNodes(node.true_branch, leafNodes)
