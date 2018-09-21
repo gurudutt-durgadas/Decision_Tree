@@ -276,7 +276,10 @@ def classify(row, node):
 
     # Base case: we've reached a leaf
     if isinstance(node, Leaf):
-        return node.predictions
+        inverse = [(value, key) for key, value in node.predictions.items()]
+        #print max(inverse)[1]
+        #return node.predictions
+        return max(inverse)[1]
 
     # Decide whether to follow the true-branch or the false-branch.
     # Compare the feature / value stored in the node,
@@ -352,7 +355,8 @@ def computeAccuracy(rows, node):
     numAccurate = 0
     for row in rows:
         label = classify(row, node)
-        if (str(list(label.keys())[0]) == str(row[-1])):
+        #if (str(list(label.keys())[0]) == str(row[-1])):
+        if (str(label) == str(row[-1])):
             numAccurate = numAccurate + 1
         #print(str(list(label.keys())[0]) + " " + row[-1])
         # print(str(numAccurate)+" "+str(totalRows))
