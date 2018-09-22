@@ -297,19 +297,19 @@ def print_tree(node, spacing=""):
     # Base case: we've reached a leaf
     if isinstance(node, Leaf):
         # Print the depth
-        print("Depth:" + str(node.depth))
+        print(spacing +"Depth:" + str(node.depth))
 
         # Print the node id
-        print("Node Id:" + str(node.id))
+        print(spacing +"Node Id:" + str(node.id))
 
         print(spacing + "Predict", node.predictions)
         return
 
     # Print the depth
-    print("Depth:" + str(node.depth))
+    print(spacing +"Depth:" + str(node.depth))
 
     # Print the node id
-    print("Node Id:" + str(node.id))
+    print(spacing +"Node Id:" + str(node.id))
 
     # Print the question at this node
     print(spacing + str(node.question))
@@ -387,13 +387,13 @@ def pruneList(List):
     return pList
 
 def prunerandom(prList):
-   # prList = getInnerNodes()
+    # prList = getInnerNodes()
 
     for item in prList:
         if(item.id ==0.0):
             prList.remove(item)
 
-    num_to_select = int(len(prList)/2)
+    num_to_select = int(len(prList)/random.randint(2, 5))
     rlist = random.sample(prList,num_to_select)
 
 
